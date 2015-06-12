@@ -20,21 +20,23 @@ Line::Line( Vec2f mMousePosition ){
     mNOff = Vec2f ( randFloat( 1000 ), randFloat( 1000 ) );
     noiseCount = randFloat( 1000.0f );
     //noiseColor = 0.0f;
+    mColor = Color(CM_HSV, Rand::randFloat(), 1.0f, 1.0f );
+
     //mColor = Color(CM_RGB, Vec3f(1.0f, 0.0f, 0.0f));
     mPerlin = Perlin();
 }
 
 void Line::createVectors(){
     mVectors.clear();
-    int radius = 400;
+    int radius = Rand::randInt(50, 200);
     float numPoints = 100.0f;
     float pointDegree = 300 / numPoints;
     for( int i=0; i < numPoints; i++ ){
         float x = cos( pointDegree * i) * radius;
         float y = sin( pointDegree * i) * radius;
-        float n = mPerlin.fBm( noiseCount ) * 20;
-        mVectors.push_back( Vec2f( x + n + mMouseLoc.x, y + n + mMouseLoc.y ) );
-        noiseCount += 0.01f;
+        //float n = mPerlin.fBm( noiseCount ) * 20;
+        mVectors.push_back( Vec2f( x + mMouseLoc.x, y + mMouseLoc.y ) );
+        //noiseCount += 0.01f;
     }
     mPath.clear();
         for(int i=0;i<mVectors.size()-1;++i) {
@@ -60,13 +62,11 @@ void Line::createVectors(){
 //            gl::color( mColor );
            mPath.curveTo(b1, b2, p2);
         }
-    
-
 }
 
 void Line::render(){
-   // gl::color( Color( mColor) );
-    gl::color( Color( 1, 0, 1) );
+   gl::color( Color( mColor) );
+    
    gl::draw( mPath );
 }
 
