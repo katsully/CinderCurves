@@ -1,4 +1,4 @@
-dependencies: /Users/kathleen/CrazyLines/xcode/Line.cpp \
-  /Users/kathleen/CrazyLines/xcode/Line.h \
-  ../../Downloads/cinder_0.8.6_mac/include/cinder/Perlin.h \
-  ../../Downloads/cinder_0.8.6_mac/include/cinder/Rand.h
+dependencies: /Users/Kat/CinderCurves/xcode/Line.cpp \
+  /Users/Kat/CinderCurves/xcode/Line.h \
+  /Users/Kat/Cinder/include/cinder/Perlin.h \
+  /Users/Kat/Cinder/include/cinder/Rand.h
